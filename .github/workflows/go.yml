@@ -31,14 +31,14 @@ jobs:
         fi
 
     - name: Build Linux
-      run: GOOS=windows go build -v . -o edgex_cli_linux
+      run: GOOS=windows go build  -o edgex_cli_linux -v .
 
     - name: Build Windows
-      run: GOOS=linux go build -v . -o edgex_cli_win.exe
+      run: GOOS=linux go build  -o edgex_cli_win.exe -v .
     
     
     - name: Build MacOS
-      run:  GOOS=darwin go build -v . -o edgex_cli_mac
+      run:  GOOS=darwin go build -o edgex_cli_mac -v .
     
     - name: Test
       run: go test -v .
