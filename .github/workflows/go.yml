@@ -44,9 +44,11 @@ jobs:
       run: go test -v .
     
     - name: GitHub Upload Release Artifacts
-      uses: fnkr/github-action-ghr@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GHR_PATH: dist/
+      uses: actions/upload-artifact@v2
+      with:
+        name: EdgeX CLI
+        path: |
+            dist/
+      
 
 
