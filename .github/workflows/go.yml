@@ -31,25 +31,22 @@ jobs:
         fi
 
     - name: Build Linux
-      run: GOOS=windows go build  -o edgex_cli_linux -v .
+      run: GOOS=windows go build  -o dist/edgex_cli_linux -v .
 
     - name: Build Windows
-      run: GOOS=linux go build  -o edgex_cli_win.exe -v .
+      run: GOOS=linux go build  -o dist/edgex_cli_win.exe -v .
     
     
     - name: Build MacOS
-      run:  GOOS=darwin go build -o edgex_cli_mac -v .
+      run:  GOOS=darwin go build -o dist/edgex_cli_mac -v .
     
     - name: Test
       run: go test -v .
     
     - name: GitHub Upload Release Artifacts
-      uses: Roang-zero1/github-upload-release-artifacts-action@v2.1.0
-       with:
-        args:
-        - edgex_cli_linux
-        - edgex_cli_mac
-        - edgex_cli_win
-       env:
+      uses: fnkr/github-action-ghr@v1
+      env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GHR_PATH: dist/
+
 
