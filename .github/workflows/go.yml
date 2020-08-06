@@ -46,9 +46,23 @@ jobs:
     - name: GitHub Upload Release Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: EdgeX CLI
+        name: EdgeX CLI Linux
         path: |
-            dist/
+            dist/edgex_cli_linux
+      
+    - name: GitHub Upload Release Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: EdgeX CLI Windows
+        path: |
+            dist/edgex_cli_win.exe
+            
+    - name: GitHub Upload Release Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: EdgeX CLI Mac
+        path: |
+            dist/edgex_cli_mac
       
 
 
