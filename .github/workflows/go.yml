@@ -30,8 +30,15 @@ jobs:
             dep ensure
         fi
 
-    - name: Build
-      run: go build -v .
+    - name: Build Linux
+      run: GOOS=windows go build -v . -o edgex_cli_linux
 
+    - name: Build Windows
+      run: GOOS=linux go build -v . -o edgex_cli_win.exe
+    
+    
+    - name: Build MacOS
+      run:  GOOS=darwin go build -v . -o edgex_cli_mac
+    
     - name: Test
       run: go test -v .
