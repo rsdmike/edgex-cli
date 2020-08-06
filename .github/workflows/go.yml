@@ -42,3 +42,14 @@ jobs:
     
     - name: Test
       run: go test -v .
+    
+    - name: GitHub Upload Release Artifacts
+      uses: Roang-zero1/github-upload-release-artifacts-action@v2.1.0
+       with:
+        args:
+        - edgex_cli_linux
+        - edgex_cli_mac
+        - edgex_cli_win
+       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
