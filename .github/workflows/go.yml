@@ -32,10 +32,12 @@ jobs:
 
     - name: Build Linux
       run: GOOS=windows go build  -o dist/edgex_cli_linux -v .
+    
+    - name: Build Linux (ARM64)
+      run: GOOS=windows GOARCH=arm64 go build  -o dist/edgex_cli_linux_arm64 -v .
 
     - name: Build Windows
       run: GOOS=linux go build  -o dist/edgex_cli_win.exe -v .
-    
     
     - name: Build MacOS
       run:  GOOS=darwin go build -o dist/edgex_cli_mac -v .
@@ -63,6 +65,13 @@ jobs:
         name: EdgeX CLI Mac
         path: |
             dist/edgex_cli_mac
+
+    - name: GitHub Upload Release Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: EdgeX CLI Linux (ARM64)
+        path: |
+            dist/edgex_cli_linux_arm64
       
 
 
